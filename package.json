@@ -1,0 +1,93 @@
+{
+  "private": true,
+  "name": "wsr-poc",
+  "version": "1.0.0",
+  "homepage": "",
+  "author": {
+    "name": "Lior Belinsky",
+    "email": "liorbe@wix.com",
+    "url": ""
+  },
+  "yoshi": {
+    "entry": {
+      "widget": "widget",
+      "settings": "settings"
+    },
+    "externals": {
+      "react": "React",
+      "react-dom": "ReactDOM",
+      "lodash": "_",
+      "jquery": "$",
+      "Wix": "Wix",
+      "editor-ui-lib": "UI"
+    }
+  },
+  "scripts": {
+    "start": "yoshi start",
+    "build": ":",
+    "precommit": "yoshi lint",
+    "pretest": "yoshi build",
+    "test": "yoshi test",
+    "posttest": "yoshi lint",
+    "release": "yoshi release"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-3": "^6.5.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.3.0",
+    "husky": "^0.13.4",
+    "import-path": "0.0.5",
+    "jsdom-global": "^2.1.0",
+    "nock": "^8.0.0",
+    "react-test-renderer": "^15.5.4",
+    "wix-bootstrap-testkit": "latest",
+    "wix-config-emitter": "latest",
+    "yoshi": "latest"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "babel-polyfill": "^6.9.1",
+    "color": "^2.0.1",
+    "express": "^4.13.4",
+    "prop-types": "^15.5.4",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0",
+    "wix-bootstrap-ng": "latest",
+    "wix-express-rendering-model": "latest",
+    "wix-renderer": "latest",
+    "wix-run-mode": "latest",
+    "wix-style-react": "^1.1.4260",
+    "wix-ui-core": "^1.0.7",
+    "wix-ui-theme": "latest"
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "stage-3"
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "env",
+            {
+              "targets": {
+                "node": "current"
+              }
+            }
+          ]
+        ]
+      },
+      "development": {
+        "presets": [
+          "env"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": "wix/react"
+  }
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <%- newrelic %>
+    <link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="<%= staticsBaseUrl %>settings<% if (!debug) { %>.min<% } %>.css">
+    <script src="//static.parastorage.com/services/third-party/react/15.3.1/react-with-addons.min.js"></script>
+    <script src="//static.parastorage.com/services/third-party/react/15.3.1/react-dom.min.js"></script>
+    <script src="//static.parastorage.com/services/third-party/jquery/3.1.1/dist/jquery.min.js"></script>
+    <script src="//static.parastorage.com/services/third-party/lodash/4.17.2/lodash.js"></script>
+    <script src="//static.parastorage.com/services/js-sdk/1.87.0/js/wix.min.js"></script>
+    <script src="//static.parastorage.com/services/editor-ui-lib/1.28.0/lib/editor-ui-lib.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.__BASEURL__ = '<%= basename %>';
+      window.__LOCALE__ = '<%= locale %>';
+      window.__STATICS_BASE_URL__ = '<%= staticsBaseUrl %>';
+    </script>
+    <script src="<%= staticsBaseUrl %>settings.bundle<% if (!debug) { %>.min<% } %>.js"></script>
+  </body>
+</html>
