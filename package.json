@@ -1,93 +1,79 @@
 {
-  "private": true,
-  "name": "wsr-poc",
+  "name": "tpa-test",
   "version": "1.0.0",
-  "homepage": "",
+  "license": "UNLICENSED",
+  "private": true,
   "author": {
     "name": "Lior Belinsky",
     "email": "liorbe@wix.com",
     "url": ""
   },
-  "yoshi": {
-    "entry": {
-      "widget": "widget",
-      "settings": "settings"
-    },
-    "externals": {
-      "react": "React",
-      "react-dom": "ReactDOM",
-      "lodash": "_",
-      "jquery": "$",
-      "Wix": "Wix",
-      "editor-ui-lib": "UI"
-    }
-  },
   "scripts": {
-    "start": "yoshi start",
-    "build": ":",
-    "precommit": "yoshi lint",
-    "pretest": "yoshi build",
-    "test": "yoshi test",
-    "posttest": "yoshi lint",
-    "release": "yoshi release"
+    "start": "haste start",
+    "precommit": "haste lint",
+    "pretest": "haste build",
+    "test": "haste test --jest",
+    "posttest": "haste lint",
+    "release": "haste release"
   },
   "devDependencies": {
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-stage-3": "^6.5.0",
-    "chai": "^3.5.0",
-    "enzyme": "^2.3.0",
-    "husky": "^0.13.4",
-    "import-path": "0.0.5",
-    "jsdom-global": "^2.1.0",
-    "nock": "^8.0.0",
-    "react-test-renderer": "^15.5.4",
-    "wix-bootstrap-testkit": "latest",
-    "wix-config-emitter": "latest",
-    "yoshi": "latest"
+    "@types/jest": "^22.1.1",
+    "@types/prop-types": "~15.5.0",
+    "@types/react": "~15.6.0",
+    "@types/react-dom": "~15.5.0",
+    "@types/react-i18next": "~4.6.0",
+    "enzyme": "^2.9.1",
+    "enzyme-adapter-react-15": "^1.0.5",
+    "express": "~4.15.0",
+    "express-session": "~1.15.0",
+    "haste-preset-yoshi": "latest",
+    "husky": "~0.14.0",
+    "stylable-integration": "^6.0.5",
+    "react-test-renderer": "~15.6.0",
+    "ts-jest": "^22.0.2",
+    "typescript": "~2.4.0",
+    "velocity": "~0.7.0"
   },
   "dependencies": {
-    "axios": "^0.15.2",
-    "babel-polyfill": "^6.9.1",
-    "color": "^2.0.1",
-    "express": "^4.13.4",
-    "prop-types": "^15.5.4",
-    "react": "^15.5.0",
-    "react-dom": "^15.5.0",
-    "wix-bootstrap-ng": "latest",
-    "wix-express-rendering-model": "latest",
-    "wix-renderer": "latest",
-    "wix-run-mode": "latest",
-    "wix-style-react": "^1.1.4260",
-    "wix-ui-core": "^1.0.7",
-    "wix-ui-theme": "latest"
+    "axios": "~0.16.0",
+    "i18next": "~8.4.0",
+    "i18next-xhr-backend": "~1.4.0",
+    "prop-types": "~15.6.0",
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "react-i18next": "~4.8.0",
+    "wix-axios-config": "latest",
+    "wix-style-processor": "^3.0.121",
+    "wix-ui-tpa": "^1.0.47"
   },
-  "babel": {
-    "presets": [
-      "react",
-      "stage-3"
+  "haste": {
+    "preset": "yoshi"
+  },
+  "jest": {
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+      "\\.(css)$": "stylable-integration/jest"
+    },
+    "transformIgnorePatterns": [],
+    "setupTestFrameworkScriptFile": "wix-ui-test-utils/dist/src/jest-setup",
+    "setupFiles": [
+      "<rootDir>/test/enzyme-setup"
     ],
-    "env": {
-      "test": {
-        "presets": [
-          [
-            "env",
-            {
-              "targets": {
-                "node": "current"
-              }
-            }
-          ]
-        ]
-      },
-      "development": {
-        "presets": [
-          "env"
-        ]
-      }
-    }
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/",
+      "<rootDir>/node_modules/"
+    ],
+    "testRegex": "/src/.*\\.spec\\.(ts|tsx)$"
   },
-  "eslintConfig": {
-    "extends": "wix/react"
+  "yoshi": {
+    "externals": {
+      "react": "React",
+      "react-dom": "ReactDOM"
+    }
   }
 }
