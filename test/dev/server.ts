@@ -2,8 +2,7 @@ import * as express from 'express';
 import * as session from 'express-session';
 import {renderVM} from './vm';
 
-export function start() {
-  const port = 9100;
+export function start(port = process.env.PORT || 3000) {
   const app = express();
 
   app.use(session({
