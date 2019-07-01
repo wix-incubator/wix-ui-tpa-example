@@ -35,14 +35,12 @@
     "velocity": "~0.7.0"
   },
   "dependencies": {
-    "axios": "~0.16.0",
     "i18next": "~8.4.0",
     "i18next-xhr-backend": "~1.4.0",
     "prop-types": "~15.6.0",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-i18next": "~4.8.0",
-    "wix-axios-config": "latest",
     "wix-style-processor": "^3.0.121",
     "wix-ui-tpa": "^1.0.47"
   },
