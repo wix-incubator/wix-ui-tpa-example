@@ -9,56 +9,50 @@
     "url": ""
   },
   "scripts": {
-    "start": "haste start",
-    "precommit": "haste lint",
-    "pretest": "haste build",
-    "test": "haste test --jest",
-    "posttest": "haste lint",
-    "release": "haste release"
+    "start": "yoshi start",
+    "precommit": "yoshi lint",
+    "pretest": "yoshi build",
+    "test": "yoshi test --jest",
+    "posttest": "yoshi lint",
+    "release": "yoshi release"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.8",
     "@types/jest": "^22.1.1",
     "@types/prop-types": "~15.5.0",
     "@types/react": "~15.6.0",
     "@types/react-dom": "~15.5.0",
     "@types/react-i18next": "~4.6.0",
-    "enzyme": "^2.9.1",
-    "enzyme-adapter-react-15": "^1.0.5",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.11.0",
     "express": "~4.15.0",
     "express-session": "~1.15.0",
-    "haste-preset-yoshi": "latest",
     "husky": "~0.14.0",
     "stylable-integration": "^6.0.5",
     "react-test-renderer": "~15.6.0",
     "ts-jest": "^22.0.2",
-    "typescript": "~2.4.0",
+    "typescript": "^3.2.4",
     "velocity": "~0.7.0"
   },
   "dependencies": {
-    "axios": "~0.16.0",
     "i18next": "~8.4.0",
     "i18next-xhr-backend": "~1.4.0",
     "prop-types": "~15.6.0",
-    "react": "15.6.1",
-    "react-dom": "15.6.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "react-i18next": "~4.8.0",
-    "wix-axios-config": "latest",
     "wix-style-processor": "^3.0.121",
-    "wix-ui-tpa": "^1.0.47"
-  },
-  "haste": {
-    "preset": "yoshi"
+    "wix-ui-tpa": "^1.0.47",
+    "yoshi": "^4.9.6"
   },
   "jest": {
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
-      "\\.(css)$": "stylable-integration/jest"
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "moduleNameMapper": {
+      "\\.(scss)$": "identity-obj-proxy"
     },
     "transformIgnorePatterns": [],
-    "setupTestFrameworkScriptFile": "wix-ui-test-utils/dist/src/jest-setup",
-    "setupFiles": [
-      "<rootDir>/test/enzyme-setup"
-    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -66,9 +60,16 @@
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/dist/",
-      "<rootDir>/node_modules/"
+      "<rootDir>/node_modules/",
+      "<rootDir>/generator",
+      "/src/.*\\.browser\\.spec\\.(ts|tsx)$"
     ],
-    "testRegex": "/src/.*\\.spec\\.(ts|tsx)$"
+    "testRegex": "/src/.*\\.spec\\.(ts|tsx)$",
+    "setupTestFrameworkScriptFile": "wix-ui-test-utils/jest-setup",
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/test/enzyme-setup"
+    ]
   },
   "yoshi": {
     "externals": {

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {Engine} from 'velocity';
+import { Engine } from 'velocity';
 
 function loadData(file) {
   try {
@@ -10,9 +10,9 @@ function loadData(file) {
 }
 
 export function renderVM(template, data) {
-  const engine = new Engine({template});
+  const engine = new Engine({ template });
   const velocityData = loadData('./velocity.data.json');
   const velocityDataPrivate = loadData('./velocity.private.data.json');
 
-  return engine.render(Object.assign({}, velocityData, velocityDataPrivate, data));
+  return engine.render({ ...velocityData, ...velocityDataPrivate, ...data });
 }

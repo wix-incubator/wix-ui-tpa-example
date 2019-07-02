@@ -1,26 +1,26 @@
 import * as React from 'react';
-import {mount} from 'enzyme';
+import { mount } from 'enzyme';
 import App from './App';
-
-declare let Wix: any;
 
 describe('App', () => {
   let wrapper;
 
   afterEach(() => wrapper.detach());
   beforeEach(() => {
-    window['Wix'] = {
+    window['Wix'] = { // tslint:disable-line
       Utils: {
-        getViewMode: () => 'site'
-      }
+        getViewMode: () => 'site',
+      },
     };
   });
 
   it('renders a title correctly', () => {
-    wrapper = mount(
-      <App/>,
-      {attachTo: document.createElement('div')}
-    );
-    expect(wrapper.find('h2').length).toBe(1);
+    wrapper = mount(<App />, { attachTo: document.createElement('div') });
+    expect(
+      wrapper
+        .find('span')
+        .first()
+        .text(),
+    ).toBe('This is a demo TPA');
   });
 });

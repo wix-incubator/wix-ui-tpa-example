@@ -1,0 +1,35 @@
+:import {
+  -st-from: "wix-ui-tpa/dist/src/components/Text/Text.st.css";
+  -st-default: Text;
+}
+
+:import {
+  -st-from: "wix-ui-tpa/dist/src/components/Button/Button.st.css";
+  -st-default: Button;
+}
+
+:vars {
+  runningTextColor: #FF5964;
+}
+
+.root {
+  color: aqua;
+}
+
+.button {
+  -st-extends: Button;
+  -st-mixin: Button(
+    MainTextColor value(runningTextColor),
+    MainBackgroundColor #38618C,
+    MainBorderColor value(runningTextColor),
+    MainBorderWidth 2px,
+    MainBorderRadius 18px
+  );
+}
+
+.text {
+  -st-extends: Text;
+  -st-mixin: Text(
+    MainTextColor value(runningTextColor)
+  );
+}
