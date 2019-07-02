@@ -1,9 +1,0 @@
-:import {
-  -st-from: "wix-ui-tpa/dist/src/components/ToggleSwitch/ToggleSwitch.st.css";
-  -st-default: Toggle;
-}
-
-.root {
-  -st-extends: Toggle;
-  -st-mixin: Toggle();
-}

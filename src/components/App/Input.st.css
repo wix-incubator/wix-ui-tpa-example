@@ -1,9 +1,0 @@
-:import {
-  -st-from: "wix-ui-tpa/dist/src/components/Input/Input.st.css";
-  -st-default: Input;
-}
-
-.root {
-  -st-extends: Input;
-  -st-mixin: Input();
-}

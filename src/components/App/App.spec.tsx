@@ -16,6 +16,11 @@ describe('App', () => {
 
   it('renders a title correctly', () => {
     wrapper = mount(<App />, { attachTo: document.createElement('div') });
-    expect(wrapper.find('h2').length).toBe(1);
+    expect(
+      wrapper
+        .find('span')
+        .first()
+        .text(),
+    ).toBe('This is a demo TPA');
   });
 });

@@ -4,15 +4,16 @@
     <meta charset="utf-8">
     <title>${title}</title>
     <link type="image/png" href="https://www.wix.com/favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" href="${clientTopology.staticsBaseUrl}app#if(!${debug}).min#{end}.css">
     <script src="https://${clientTopology.staticsDomain}/polyfill/v2/polyfill#if(!${debug}).min#{end}.js?features=default,es6,es7,es2017&flags=gated&unknown=polyfill&rum=0"></script>
-    <script src="https://${clientTopology.staticsDomain}/unpkg/react@15.6.1/dist/react#if(!${debug}).min#{end}.js"></script>
-    <script src="https://${clientTopology.staticsDomain}/unpkg/react-dom@15.6.1/dist/react-dom#if(!${debug}).min#{end}.js"></script>
+    <script src="https://${clientTopology.staticsDomain}/unpkg/react@16.8.3/umd/react#if(!${debug}).production.min#{else}.development#{end}.js"></script>
+    <script src="https://${clientTopology.staticsDomain}/unpkg/react-dom@16.8.3/umd/react-dom#if(!${debug}).production.min#{else}.development#{end}.js"></script>
     <script type="text/javascript" src="//static.parastorage.com/services/js-sdk/1.93.0/js/wix.min.js"></script>
+    <script>
+      window.Wix.Utils.getViewMode = function(){return 'editor';};
+    </script>
     ${newRelicEndUserHeader}
   </head>
   <body>
-    <div id="visit-count">Visit count: ${visitCount}</div>
     <div id="root"></div>
     <script>
       window.__BASEURL__ = '${basename}';

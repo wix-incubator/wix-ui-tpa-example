@@ -1,27 +1,15 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import { Input, TpaInputProps } from 'wix-ui-tpa/Input';
-import { ToggleSwitch } from 'wix-ui-tpa/ToggleSwitch';
-import { ToggleSwitchProps } from 'wix-ui-core/toggle-switch';
-import styleProcessor from 'wix-style-processor';
-import { withStylable } from 'wix-ui-core/withStylable';
-import inputStyles from './Input.st.css';
-import toggleStyles from './Toggle.st.css';
+import { Text, TYPOGRAPHY } from 'wix-ui-tpa/Text';
+import { Button } from 'wix-ui-tpa/Button';
+import styles from './App.st.css';
 
 interface AppProps {}
+interface AppState {
+  numOfClicks: number;
+}
 
-export const InputExample = withStylable<TpaInputProps>(
-  Input,
-  inputStyles,
-  () => null,
-);
-export const ToggleExample = withStylable<ToggleSwitchProps>(
-  ToggleSwitch,
-  toggleStyles,
-  () => null,
-);
-
-export default class App extends React.Component<AppProps, any> {
+export default class App extends React.Component<AppProps, AppState> {
   static propTypes = {
     t: PropTypes.func,
   };
@@ -29,25 +17,30 @@ export default class App extends React.Component<AppProps, any> {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false,
-      disabled: false,
+      numOfClicks: 0,
     };
   }
 
-  componentWillMount() {
-    styleProcessor.init();
-  }
-
   render() {
+    const { numOfClicks } = this.state;
+
     return (
-      <div>
-        <h2>This is a demo TPA</h2>
-        <InputExample />
-        <ToggleExample
-          onChange={() => this.setState({ checked: !this.state.checked })}
-          disabled={this.state.disabled}
-          checked={this.state.checked}
-        />
+      <div {...styles('root', {}, this.props)}>
+        <Text className={styles.text} typography={TYPOGRAPHY.largeTitle}>
+          This is a demo TPA
+        </Text>
+        <br />
+        <Text className={styles.text} typography={TYPOGRAPHY.runningText}>
+          You clicked the button {numOfClicks} time
+          {numOfClicks !== 1 ? 's' : ''}
+        </Text>
+        <br />
+        <Button
+          className={styles.button}
+          onClick={() => this.setState({ numOfClicks: numOfClicks + 1 })}
+        >
+          Click me
+        </Button>
       </div>
     );
   }
